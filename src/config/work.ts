@@ -9,11 +9,11 @@ export const config: GroupList = [
     name: "Pokemon",
     items: [
       {
-        title: "Showdown",
+        title: "🥷 Showdown",
         link: "https://play.pokemonshowdown.com/",
       },
       {
-        title: "Notas de combate",
+        title: "📝 Notas de combate",
         link: "link1",
       },
       {

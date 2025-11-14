@@ -7,12 +7,18 @@ export type Props = {
 export const GroupContainer = ({ group }: Props) => {
   const { name, items } = group;
   return (
-    <div className="border h-60 w-56">
-      <div className="font-bold text-xl border-b p-2">{name}</div>
+    <div className="border rounded-lg h-96 w-96 my-4 bg-emerald-300">
+      <div className="font-bold px-4 text-xl border-b py-2 bg-white rounded-t-lg">
+        {name}
+      </div>
       <div className="p-2">
         {items.map((item: Item, index: number) => (
           <>
-            <div className="text-base bg-white" key={item.title}>
+            <div
+              className="text-lg bg-emerald-200 p-3 border rounded-lg hover:bg-emerald-500 hover:cursor-pointer
+            "
+              key={item.title}
+            >
               <a href={item.link}>{item.title}</a>
             </div>
             {index != items.length - 1 && <div className="my-2" />}
