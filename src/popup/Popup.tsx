@@ -1,52 +1,29 @@
-import { useEffect, useState } from "react";
-import { Input } from "./components/Input";
-import { SaveButton } from "./components/SaveButton";
-import { Header } from "./components/Header";
-import { Card } from "./components/Card";
-import { Footer } from "./components/Footer";
-import { type Link } from "../types";
-import { LINKS_KEY } from "../types";
+import { useState } from "react";
+import { Input, SaveButton, Header, Card, Footer } from "./components";
+import { LINKS_KEY, type LinksList } from "../types";
+import { useGetActiveTabData } from "./hooks/useGetActiveTabData";
 
 export const Popup = () => {
-  const [activeTab, setActiveTab] = useState<Link>({
-    url: "",
-    title: "",
-  });
   const [group, setGroup] = useState("");
   const [isSaving, setIsSaving] = useState(false);
-
-  const getActiveTabData = () => {
-    chrome.tabs.query(
-      { active: true, currentWindow: true },
-      function (tabs: Link[]) {
-        const activeTab = tabs[0];
-        setActiveTab({ url: activeTab.url, title: activeTab.title });
-      }
-    );
-  };
-
-  useEffect(() => {
-    getActiveTabData();
-  }, []);
+  const { activeTab } = useGetActiveTabData();
 
   const handleSave = async () => {
     setIsSaving(true);
-    chrome.storage.local
-      .get([LINKS_KEY])
-      .then((result: { [LINKS_KEY]: Link[] }) => {
-        const newLinks = [
-          ...(result[LINKS_KEY] ?? []),
-          { title: activeTab.title, url: activeTab.url, group },
-        ];
+    chrome.storage.local.get([LINKS_KEY]).then((result: LinksList) => {
+      const newLinks = [
+        ...(result[LINKS_KEY] ?? []),
+        { title: activeTab.title, url: activeTab.url, group },
+      ];
 
-        chrome.storage.local
-          .set({
-            [LINKS_KEY]: newLinks,
-          })
-          .then(() => {
-            setIsSaving(false);
-          });
-      });
+      chrome.storage.local
+        .set({
+          [LINKS_KEY]: newLinks,
+        })
+        .then(() => {
+          setIsSaving(false);
+        });
+    });
   };
 
   return (
