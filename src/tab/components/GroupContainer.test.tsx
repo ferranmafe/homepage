@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { GroupContainer } from "./GroupContainer";
 import type { Props } from "./GroupContainer";
-import type { Group, Item } from "./types";
+import type { Group, Item } from "../types";
 
 const itemFabricator = (item: Partial<Item> = {}): Item => {
   return {

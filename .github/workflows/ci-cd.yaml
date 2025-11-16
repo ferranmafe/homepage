@@ -1,0 +1,33 @@
+name: Homepage extension CI-CD pipeline
+on: [push]
+jobs:
+  codestyle:
+    runs-on: ubuntu-latest
+    name: Frontend codestyle check
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: "18.17.0"
+      - name: Display NodeJS version
+        run: node --version
+      - name: Install project dependencies
+        run: npm install
+      - name: Run project formatter
+        run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    name: Frontend tests
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: "18.17.0"
+      - name: Display NodeJS version
+        run: node --version
+      - name: Install project dependencies
+        run: npm install
+      - name: Run tests
+        run: npm run test

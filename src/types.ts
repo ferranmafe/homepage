@@ -1,12 +1,6 @@
-export type Item = {
+export const LINKS_KEY: string = "links";
+
+export type Link = {
+  url: string;
   title: string;
-  link: string;
-  icon?: React.ReactNode;
 };
-
-export type Group = {
-  name: string;
-  items: Item[];
-};
-
-export type GroupList = Group[];

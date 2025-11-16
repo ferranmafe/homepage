@@ -1,4 +1,4 @@
-import type { Group, Item } from "./types";
+import type { Group, Item } from "../types";
 
 export type Props = {
   group: Group;

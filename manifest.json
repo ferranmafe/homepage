@@ -4,8 +4,11 @@
   "version": "1.0.0",
   "description": "Homepage",
   "chrome_url_overrides": {
-    "newtab": "index.html"
+    "newtab": "src/tab/index.html"
   },
-  "permissions": [],
+  "action": {
+    "default_popup": "src/popup/index.html"
+  },
+  "permissions": ["activeTab", "storage"],
   "host_permissions": ["<all_urls>"]
 }
