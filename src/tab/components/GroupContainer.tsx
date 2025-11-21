@@ -7,7 +7,7 @@ export type Props = {
 export const GroupContainer = ({ group }: Props) => {
   const { name, items } = group;
   return (
-    <div className="border rounded-lg h-64 w-96 my-4 bg-emerald-300">
+    <div className="border rounded-lg w-96 my-4 bg-emerald-300">
       <div className="font-bold px-4 text-xl border-b py-2 bg-white rounded-t-lg">
         {name}
       </div>
