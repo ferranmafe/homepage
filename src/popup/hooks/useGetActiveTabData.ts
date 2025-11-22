@@ -8,6 +8,7 @@ export const useGetActiveTabData = (): {
   const [activeTab, setActiveTab] = useState<Link>({
     url: "",
     title: "",
+    group: "",
   });
 
   useEffect(() => {
@@ -15,7 +16,7 @@ export const useGetActiveTabData = (): {
       { active: true, currentWindow: true },
       function (tabs: Link[]) {
         const activeTab = tabs[0];
-        setActiveTab({ url: activeTab.url, title: activeTab.title });
+        setActiveTab({ url: activeTab.url, title: activeTab.title, group: "" });
       }
     );
   }, []);

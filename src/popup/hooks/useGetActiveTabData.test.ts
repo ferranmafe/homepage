@@ -17,7 +17,7 @@ describe("useGetActiveTabData", () => {
   it("should return empty data on start", () => {
     const { result } = setupHook();
 
-    expect(result.current.activeTab).toEqual({ url: "", title: "" });
+    expect(result.current.activeTab).toEqual({ url: "", title: "", group: "" });
   });
 
   it("should fetch data from active tab", async () => {
@@ -27,6 +27,7 @@ describe("useGetActiveTabData", () => {
       expect(result.current.activeTab).toEqual({
         url: "http://foo.com",
         title: "foo",
+        group: "",
       });
     });
   });

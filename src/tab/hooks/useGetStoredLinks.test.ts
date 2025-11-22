@@ -13,6 +13,7 @@ describe("useGetStoredLinks", () => {
               {
                 url: "http://foo.com",
                 title: "foo",
+                group: "Everything",
               },
             ],
           }),
