@@ -23,6 +23,7 @@ const itemFabricator = (item: Partial<Item> = {}): Item => {
   return {
     title: "example title",
     link: "http://foo.com",
+    originalIndex: 0,
     ...item,
   };
 };
@@ -64,8 +65,16 @@ describe("<GroupContainer />", () => {
 
   it("should delete an item", async () => {
     const user = userEvent.setup();
-    const item1 = itemFabricator({ title: "item 1", link: "http://item1.com" });
-    const item2 = itemFabricator({ title: "item 2", link: "http://item2.com" });
+    const item1 = itemFabricator({
+      title: "item 1",
+      link: "http://item1.com",
+      originalIndex: 0,
+    });
+    const item2 = itemFabricator({
+      title: "item 2",
+      link: "http://item2.com",
+      originalIndex: 1,
+    });
 
     const link1 = {
       title: "item 1",

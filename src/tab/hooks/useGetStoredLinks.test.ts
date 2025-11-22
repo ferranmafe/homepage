@@ -18,6 +18,10 @@ describe("useGetStoredLinks", () => {
             ],
           }),
         },
+        onChanged: {
+          addListener: jest.fn(),
+          removeListener: jest.fn(),
+        },
       },
     };
   });
@@ -38,6 +42,7 @@ describe("useGetStoredLinks", () => {
             {
               title: "foo",
               link: "http://foo.com",
+              originalIndex: 0,
             },
           ],
         },
